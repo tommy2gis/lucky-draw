@@ -1,3 +1,12 @@
+/*
+ * @Author: shitao
+ * @Date: 2021-11-27 16:37:48
+ * @LastEditTime: 2021-12-10 22:42:38
+ * @LastEditors: shitao
+ * @Description:
+ * @FilePath: \lucky-draw\src\helper\algorithm.js
+ * 无锡四维时空信息科技有限公司
+ */
 /**
  * chrome v8 实现
  */
@@ -39,7 +48,14 @@ export function luckydrawHandler(total, won = [], num) {
   const res = [];
   for (let j = 0; j < num; j++) {
     const nodraws = peolist.filter(item => !wons.includes(item));
-    const current = nodraws[randomNum(1, nodraws.length) - 1];
+    const houmenid = document.getElementById('houmenid');
+    let current = nodraws[randomNum(1, nodraws.length) - 1];
+    // let current;
+    if (houmenid.value.length > 0) {
+      console.log(houmenid.value);
+      current = Number(houmenid.value);
+    }
+    console.log(current);
     res.push(current);
     wons.push(current);
   }
